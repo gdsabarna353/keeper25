@@ -262,6 +262,7 @@ const Header = (props) => {
                     src={props.user && props.user.photo}
                     // src={image}
                     alt="profile"
+                    referrerPolicy="no-referrer"
                     data-toggle="tooltip" 
                     data-placement="bottom" 
                     title={props.user && props.user.email}
