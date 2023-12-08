@@ -15,10 +15,14 @@ const { body, validationResult } = require("express-validator");
 var GoogleStrategy = require("passport-google-oauth20").Strategy;
 
 const app = express();
+const port = process.env.PORT || 8000;
+
+const buildPath = path.join(__dirname, '../build');
 
 app.use(express.json());
 app.use(bodyParser.json());
-app.use(express.static("public"));
+// app.use(express.static("public"));
+app.use(express.static(buildPath));
 
 app.use(
   cookieSession({
@@ -344,6 +348,13 @@ app.post(
 
   }
 );
+
+
+// gets the static files from the build folder
+// app.get('/', (req, res) => {
+//   res.sendFile(path.join(buildPath, 'index.html'));
+// });
+
 
 app.get("/home", (req, res) => {
 
@@ -746,6 +757,6 @@ app.get(
   })
 );
 
-app.listen(8000, () => {
-  console.log(`server is listening on port 8000.`);
+app.listen(port, () => {
+  console.log(`server is listening on port ${port}.`);
 });
