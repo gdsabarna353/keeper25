@@ -193,7 +193,7 @@ function SignUp() {
 
 
 
-      fetch("http://localhost:8000/validate", {
+      fetch("https://keeper-server1.onrender.com/validate", {
         method: "POST",
         // headers: { "Content-Type": "multipart/form-data" },
         body: formData,
@@ -312,7 +312,7 @@ function SignUp() {
 
       // console.log("newfile-> ", newFile);
 
-      fetch("http://localhost:8000/signup", {
+      fetch("https://keeper-server1.onrender.com/signup", {
         method: "POST",
         // headers: { "Content-Type": "multipart/form-data" },
         body: formData,
