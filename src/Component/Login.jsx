@@ -37,7 +37,7 @@ function Login() {
     //   }
     // });
 
-    window.open("http://localhost:8000/auth/google", "_self");
+    window.open("https://keeper-server1.onrender.com/auth/google", "_self");
 
     // fetch("http://localhost:8000/auth/google/home", {
     //   // mode: "no-cors",
@@ -56,7 +56,7 @@ function Login() {
   }
   function handleSubmit(event) {
     event.preventDefault();
-    fetch("http://localhost:8000/login", {
+    fetch("https://keeper-server1.onrender.com/login", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ email: login.Email, password: login.Password }),
