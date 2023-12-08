@@ -19,7 +19,7 @@ function Home() {
   useEffect(() => {
 
     if (localStorage.getItem("userEmail") !== null) {
-      fetch("http://localhost:8000/home", {
+      fetch("https://keeper-server1.onrender.com/home", {
         method: "GET",
         credentials: "include",
         headers: {
@@ -49,7 +49,7 @@ function Home() {
 
   useEffect(() => {
     if (localStorage.getItem("userEmail") === null) {
-      fetch("http://localhost:8000/auth/login/success", {
+      fetch("https://keeper-server1.onrender.com/auth/login/success", {
         method: "GET",
         credentials: "include",
         headers: {
@@ -85,7 +85,7 @@ function Home() {
   function addNote(obj) {
     console.log("add is called");
     console.log(obj);
-    fetch("http://localhost:8000/home", {
+    fetch("https://keeper-server1.onrender.com/home", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -120,7 +120,7 @@ function Home() {
     // });
     // setNotes(newNotes);
 
-    fetch("http://localhost:8000/delete", {
+    fetch("https://keeper-server1.onrender.com/delete", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -143,7 +143,7 @@ function Home() {
     console.log(id, obj);
     console.log("edit is called");
 
-    fetch("http://localhost:8000/edit", {
+    fetch("https://keeper-server1.onrender.com/edit", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
