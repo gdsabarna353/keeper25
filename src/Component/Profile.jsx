@@ -63,7 +63,7 @@ export default function Profile(props) {
 
   function updateContact() {
     console.log("updated contact value-> ", contact);
-    fetch("http://localhost:8000/editProfile", {
+    fetch("https://keeper-server1.onrender.com/editProfile", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -84,7 +84,7 @@ export default function Profile(props) {
 
   function updateState() {
     console.log("updated state value-> ", state);
-    fetch("http://localhost:8000/editProfile", {
+    fetch("https://keeper-server1.onrender.com/editProfile", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -105,7 +105,7 @@ export default function Profile(props) {
 
   function updateCountry() {
     console.log("updated country value-> ", country);
-    fetch("http://localhost:8000/editProfile", {
+    fetch("https://keeper-server1.onrender.com/editProfile", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -127,7 +127,7 @@ export default function Profile(props) {
   }
 
   useEffect(() => {
-    fetch("http://localhost:8000/profile", {
+    fetch("https://keeper-server1.onrender.com/profile", {
       method: "GET",
       headers: {
         "Content-Type": "application/json",
