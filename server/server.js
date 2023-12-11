@@ -668,7 +668,7 @@ app.post(
             console.log("req-contact-2-> ", req.body.Contact);
             const user2 = new User({
               name: req.body.Name,
-              photo: "/uploads/" + req.file.filename,
+              photo: "/build/uploads/" + req.file.filename,
               country: req.body.Country,
               state: req.body.State,
               contact: req.body.Contact,
