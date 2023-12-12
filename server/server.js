@@ -23,7 +23,7 @@ app.use(express.json());
 app.use(bodyParser.json());
 // app.use(express.static("public"));
 // app.use(express.static(buildPath));
-app.use(express.static(__dirname, 'build'));
+app.use(express.static('build'));
 
 app.use(
   cookieSession({
