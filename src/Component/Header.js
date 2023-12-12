@@ -256,6 +256,7 @@ const Header = (props) => {
 
                   {/* <hr/> */}
 {/* {console.log("Html image-> ", image)} */}
+                             {props.user && console.log("profile-image-src-> ", props.user.photo)}
                   <img
                     // src="https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_1280.png"
                     // src={file}
