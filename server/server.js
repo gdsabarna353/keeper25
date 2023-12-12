@@ -17,13 +17,13 @@ var GoogleStrategy = require("passport-google-oauth20").Strategy;
 const app = express();
 const port = process.env.PORT || 8000;
 
-const buildPath = path.join(__dirname, '../build');
+const buildPath = path.join(__dirname, 'build');
 
 app.use(express.json());
 app.use(bodyParser.json());
 // app.use(express.static("public"));
-// app.use(express.static(buildPath));
-app.use(express.static('build'));
+app.use(express.static(buildPath));
+// app.use(express.static('build'));
 
 app.use(
   cookieSession({
@@ -668,7 +668,7 @@ app.post(
             console.log("req-contact-2-> ", req.body.Contact);
             const user2 = new User({
               name: req.body.Name,
-              photo: "../build/uploads/" + req.file.filename,
+              photo: "/uploads/" + req.file.filename,
               country: req.body.Country,
               state: req.body.State,
               contact: req.body.Contact,
