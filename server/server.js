@@ -5,6 +5,7 @@ var path = require("path");
 const cookieSession = require("cookie-session");
 var passport = require("passport");
 const cors = require("cors");
+const cloudinary = require("cloudinary").v2; 
 const bodyParser = require("body-parser");
 const mongoose = require("mongoose");
 const bcrypt = require("bcrypt");
@@ -22,8 +23,8 @@ const buildPath = path.join(__dirname, 'build');
 app.use(express.json());
 app.use(bodyParser.json());
 // app.use(express.static("public"));
-app.use(express.static(buildPath));
-// app.use(express.static('build'));
+// app.use(express.static(buildPath));
+app.use(express.static('build'));
 
 app.use(
   cookieSession({
@@ -56,11 +57,15 @@ mongoose.connect(
   }
 );
 
+if (!fs.existsSync("./uploads")) { 
+	fs.mkdirSync("./uploads"); 
+} 
+
 var multer = require("multer");
 
 var storage = multer.diskStorage({
   destination: (req, file, cb) => {
-    cb(null, "../build/uploads");
+    cb(null, "./uploads");
   },
   filename: (req, file, cb) => {
     cb(null, file.fieldname + "-" + Date.now() + "_" + file.originalname);
@@ -68,6 +73,15 @@ var storage = multer.diskStorage({
 });
 
 var upload = multer({ storage: storage });
+
+app.use(express.static(__dirname + "/public")); 
+app.use("/uploads", express.static("uploads")); 
+
+cloudinary.config({ 
+	cloud_name: "djhqfh2ii", 
+	api_key: "717459284765377", 
+	api_secret: "NPX4RlYaad1C6N0m_k4RMkVdODE", 
+}); 
 
 const keeperSchema = mongoose.Schema({
   name: {
@@ -657,7 +671,7 @@ app.post(
             }
           });
 
-        bcrypt.hash(password, saltRounds, (err, hash) => {
+        bcrypt.hash(password, saltRounds, async (err, hash) => {
           if (err) {
             console.log("bcrypt signup error -> ", err);
           } else {
@@ -666,9 +680,21 @@ app.post(
 
             console.log("cc2-> ", countryCode);
             console.log("req-contact-2-> ", req.body.Contact);
+
+            var locaFilePath = req.file.destination + '/' + req.file.filename;
+            var imageUrl = "";
+            console.log("locapath-> ", locaFilePath);
+            await cloudinary.uploader.upload(locaFilePath, {public_id: req.file.originalname}, function(error, result){
+              console.log("cloudinary-result-> ", result);
+              fs.unlinkSync(locaFilePath);
+		          imageUrl = result.url;
+              console.log("imageurl-cloud-> ", imageUrl);
+            });
+            
             const user2 = new User({
               name: req.body.Name,
-              photo: "/uploads/" + req.file.filename,
+              // photo: "/uploads/" + req.file.filename,
+              photo: imageUrl,
               country: req.body.Country,
               state: req.body.State,
               contact: req.body.Contact,
