@@ -40,7 +40,7 @@ function Home() {
           data.user && localStorage.setItem("userEmail", data.user.email);
           localStorage.setItem("authentication", "true");
           sessionStorage.setItem("activeSession", "true");
-          navigate("/home");
+          // navigate("/home");
           // window.location.reload(false);
           // }
         });
@@ -72,7 +72,7 @@ function Home() {
           localStorage.setItem("userEmail", data.user.email);
           localStorage.setItem("authentication", "true");
           sessionStorage.setItem("activeSession", "true");
-          navigate("/home");
+          // navigate("/home");
           window.location.reload(false);
         });
     }
