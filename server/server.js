@@ -370,6 +370,10 @@ app.post(
 //   res.sendFile(path.join(buildPath, 'index.html'));
 // });
 
+app.get('/', (req, res)=>{
+	res.send("The Server of Keeper is Running...");
+});
+
 
 app.get("/home", (req, res) => {
 
