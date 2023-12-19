@@ -57,15 +57,15 @@ mongoose.connect(
   }
 );
 
-if (!fs.existsSync("./uploads")) { 
-	fs.mkdirSync("./uploads"); 
+if (!fs.existsSync("/tmp/uploads")) { 
+	fs.mkdirSync("/tmp/uploads"); 
 } 
 
 var multer = require("multer");
 
 var storage = multer.diskStorage({
   destination: (req, file, cb) => {
-    cb(null, "./uploads");
+    cb(null, "/tmp/uploads");
   },
   filename: (req, file, cb) => {
     cb(null, file.fieldname + "-" + Date.now() + "_" + file.originalname);
@@ -75,7 +75,7 @@ var storage = multer.diskStorage({
 var upload = multer({ storage: storage });
 
 app.use(express.static(__dirname + "/public")); 
-app.use("/uploads", express.static("uploads")); 
+app.use("/tmp/uploads", express.static("/tmp/uploads")); 
 
 cloudinary.config({ 
 	cloud_name: "djhqfh2ii", 
