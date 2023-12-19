@@ -39,7 +39,7 @@ app.use(passport.session());
 
 app.use(
   cors({
-    origin: "https://keeper-client1.onrender.com",
+    origin: "http://localhost:3000",
     methods: "GET,POST,PUT,DELETE",
     credentials: true,
   })
@@ -772,7 +772,7 @@ app.get("/auth/login/success", async (req, res) => {
 
 app.get("/auth/logout", (req, res) => {
   req.logout();
-  res.redirect("https://keeper-client1.onrender.com/home");
+  res.redirect("http://localhost:3000/home");
 });
 
 app.get(
@@ -783,8 +783,8 @@ app.get(
 app.get(
   "/auth/google/home",
   passport.authenticate("google", {
-    successRedirect: "https://keeper-client1.onrender.com/home",
-    failureRedirect: "https://keeper-client1.onrender.com/login",
+    successRedirect: "http://localhost:3000/home",
+    failureRedirect: "http://localhost:3000/login",
   })
 );
 

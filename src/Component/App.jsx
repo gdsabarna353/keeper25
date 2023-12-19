@@ -16,7 +16,7 @@ function App() {
     }
     else if (!activeSession) {
         sessionStorage.loggedOutOnAuth = true;
-        window.open("https://keeper-server1.onrender.com/auth/logout", "_self");
+        window.open("http://localhost:8000/auth/logout", "_self");
         localStorage.removeItem("userEmail");
         localStorage.removeItem("userImage");
         localStorage.removeItem("authentication");
