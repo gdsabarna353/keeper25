@@ -39,7 +39,7 @@ app.use(passport.session());
 
 app.use(
   cors({
-    origin: "http://localhost:3000",
+    origin: "https://keeper25-frontend.netlify.app",
     methods: "GET,POST,PUT,DELETE",
     credentials: true,
   })
@@ -772,7 +772,7 @@ app.get("/auth/login/success", async (req, res) => {
 
 app.get("/auth/logout", (req, res) => {
   req.logout();
-  res.redirect("http://localhost:3000/home");
+  res.redirect("https://keeper25-frontend.netlify.app/home");
 });
 
 app.get(
@@ -783,8 +783,8 @@ app.get(
 app.get(
   "/auth/google/home",
   passport.authenticate("google", {
-    successRedirect: "http://localhost:3000/home",
-    failureRedirect: "http://localhost:3000/login",
+    successRedirect: "https://keeper25-frontend.netlify.app/home",
+    failureRedirect: "https://keeper25-frontend.netlify.app/login",
   })
 );
 
