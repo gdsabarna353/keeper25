@@ -759,7 +759,7 @@ app.get("/auth/login/success", async (req, res) => {
             await user.save();
           }
 
-          res.status(200).json({
+          res.json({
             success: true,
             message: "successful",
             user: newUser,
