@@ -19,7 +19,7 @@ function Home() {
   useEffect(() => {
 
     if (localStorage.getItem("userEmail") !== null) {
-      fetch("/home", {
+      fetch("https://keeper25-backend.onrender.com/home", {
         method: "GET",
         credentials: "include",
         headers: {
@@ -49,7 +49,7 @@ function Home() {
 
   useEffect(() => {
     if (localStorage.getItem("userEmail") === null) {
-      fetch("/auth/login/success", {
+      fetch("https://keeper25-backend.onrender.com/auth/login/success", {
         method: "GET",
         credentials: "include",
         headers: {
@@ -86,7 +86,7 @@ function Home() {
   function addNote(obj) {
     console.log("add is called");
     console.log(obj);
-    fetch("/home", {
+    fetch("https://keeper25-backend.onrender.com/home", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -121,7 +121,7 @@ function Home() {
     // });
     // setNotes(newNotes);
 
-    fetch("/delete", {
+    fetch("https://keeper25-backend.onrender.com/delete", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -144,7 +144,7 @@ function Home() {
     console.log(id, obj);
     console.log("edit is called");
 
-    fetch("/edit", {
+    fetch("https://keeper25-backend.onrender.com/edit", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
