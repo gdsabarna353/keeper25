@@ -37,7 +37,7 @@ function Login() {
     //   }
     // });
 
-    window.open("https://keeper25-backend.vercel.app/auth/google", "_self");
+    window.open("https://keeper25-backend.onrender.com/auth/google", "_self");
 
     // fetch("http://localhost:8000/auth/google/home", {
     //   // mode: "no-cors",
