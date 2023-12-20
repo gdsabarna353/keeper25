@@ -193,7 +193,7 @@ function SignUp() {
 
 
 
-      fetch("/validate", {
+      fetch("https://keeper25-backend.onrender.com/validate", {
         method: "POST",
         // headers: { "Content-Type": "multipart/form-data" },
         body: formData,
@@ -312,7 +312,7 @@ function SignUp() {
 
       // console.log("newfile-> ", newFile);
 
-      fetch("/signup", {
+      fetch("https://keeper25-backend.onrender.com/signup", {
         method: "POST",
         // headers: { "Content-Type": "multipart/form-data" },
         body: formData,
