@@ -28,7 +28,7 @@
     "build:prod": "webpack --mode=production --node-env=production",
     "watch": "webpack --watch",
     "serve": "webpack serve --static-watch",
-    "start-server": "cd server && node server.js",
+    "start-server": "cd server && nodemon server.js",
     "install-server": "cd server && npm install",
     "install-client": "npm install",
     "build-client": "npm run build",
