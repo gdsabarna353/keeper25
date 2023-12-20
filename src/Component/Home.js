@@ -56,7 +56,7 @@ function Home() {
           Accept: "application/json",
           "Content-Type": "application/json",
           "Access-Control-Allow-Credentials": "true",
-          "Access-Control-Allow-Origin": "*",
+          // "Access-Control-Allow-Origin": "*",
           // "Authorization": localStorage.getItem("userEmail")
         },
       })
