@@ -45,6 +45,11 @@ app.use(
   })
 );
 
+app.use((req, res, next) => {
+  res.header('Access-Control-Allow-Origin', '*');
+  next();
+});
+
 mongoose.connect(
   "mongodb+srv://sabgd:abcd1234@cluster0.zgfpmyx.mongodb.net/keeperDB?retryWrites=true&w=majority",
   { useNewUrlParser: true, useUnifiedTopology: true },
