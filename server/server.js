@@ -759,7 +759,7 @@ app.get("/auth/login/success", async (req, res) => {
             await user.save();
           }
 
-          res.json({
+          res.setHeader("Access-Control-Allow-Origin", "https://keeper25-frontend.netlify.app").status(200).json({
             success: true,
             message: "successful",
             user: newUser,
