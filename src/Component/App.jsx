@@ -29,8 +29,9 @@ function App() {
     <div className="d-flex flex-column h-100">
       <BrowserRouter>
         <Routes>
+          <Route exact path="/" element={<Home />} />
           <Route exact path="home" element={<Home />} />
-          <Route index element={<Home />} />
+{/*           <Route index element={<Home />} /> */}
           <Route exact path="login" element={<Login />} />
           <Route path="signup" element={<SignUp />} />
           <Route exact path="profile" element={<Profile />} />
