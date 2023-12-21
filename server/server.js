@@ -394,7 +394,7 @@ app.get("/home", (req, res) => {
   User.findOne({ email: email }, function (err, userResults) {
     if (err) {
       console.log(err);
-    } else {
+    } else if(userResults) {
       Task.find({ email: email }, function (err, taskResults) {
         if (err) {
           console.log(err);
@@ -409,6 +409,11 @@ app.get("/home", (req, res) => {
             savedTasks: tasks,
           });
         }
+      });
+    }else{
+      res.json({
+        user: null,
+        savedTasks: null,
       });
     }
   });
@@ -772,6 +777,11 @@ app.get("/auth/login/success", async (req, res) => {
         }
       }
     );
+  }
+	else{
+    res.json({
+      user: null,
+    });
   }
 });
 
