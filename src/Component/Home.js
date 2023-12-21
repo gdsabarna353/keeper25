@@ -18,7 +18,7 @@ function Home() {
 
   useEffect(() => {
 
-    if (localStorage.getItem("userEmail") !== null) {
+    // if (localStorage.getItem("userEmail") !== null) {
       fetch("https://keeper25-backend.onrender.com/home", {
         // method: "GET",
         // credentials: "include",
@@ -38,13 +38,13 @@ function Home() {
           setNotes(data.savedTasks);
           // }else{
           data.user && localStorage.setItem("userEmail", data.user.email);
-          localStorage.setItem("authentication", "true");
-          sessionStorage.setItem("activeSession", "true");
+          data.user && localStorage.setItem("authentication", "true");
+          data.user && sessionStorage.setItem("activeSession", "true");
           // navigate("/home");
           // window.location.reload(false);
           // }
         });
-    }
+    // }
   }, []);
 
   useEffect(() => {
@@ -72,11 +72,11 @@ function Home() {
           console.log("google login data-> ", data);
           // localStorage.setItem("googleUser", JSON.stringify(data));
           // console.log("google localstorage-> ", localStorage.getItem("googleUser"));
-          localStorage.setItem("userEmail", data.user.email);
-          localStorage.setItem("authentication", "true");
-          sessionStorage.setItem("activeSession", "true");
+          data.user && localStorage.setItem("userEmail", data.user.email);
+          data.user && localStorage.setItem("authentication", "true");
+          data.user && sessionStorage.setItem("activeSession", "true");
           // navigate("/home");
-          window.location.reload(false);
+          // window.location.reload(false);
         });
     }
   }, []);
@@ -176,7 +176,7 @@ function Home() {
           {localStorage.getItem("authentication") ? (
             <div className="my-5">
               <CreateArea addNote={addNote} />
-              {notes.map((note, index) => (
+              {notes && notes.map((note, index) => (
                 <Note
                   key={index}
                   id={note._id}
