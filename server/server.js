@@ -800,7 +800,7 @@ app.get(
 app.get(
   "/auth/google/home",
   passport.authenticate("google", {
-    successRedirect: "https://keeper25-frontend.netlify.app/signup",
+    successRedirect: "https://keeper25-frontend.netlify.app",
     failureRedirect: "https://keeper25-frontend.netlify.app/login",
   })
 );
