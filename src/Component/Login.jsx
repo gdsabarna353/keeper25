@@ -139,7 +139,7 @@ function Login() {
           <Link 
             className="btn btn-block btn-social btn-google mt-3 bg-danger text-white w-100 py-2" 
             role="button" 
-{/*             onClick={handleGoogleLogin} */}
+            //onClick={handleGoogleLogin}
             to="https://keeper25-backend.onrender.com/auth/google"
             >
             <i className="fab fa-google"></i>
