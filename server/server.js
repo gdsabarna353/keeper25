@@ -141,7 +141,7 @@ passport.use(
     {
       clientID: process.env.GOOGLE_CLIENT_ID,
       clientSecret: process.env.GOOGLE_CLIENT_SECRET,
-      callbackURL: "/auth/google/home",
+      callbackURL: "https://keeper25-backend.onrender.com/auth/google/home",
     },
     function (accessToken, refreshToken, profile, cb) {
       return cb(null, profile);
