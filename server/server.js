@@ -50,7 +50,7 @@ app.use((req, res, next) => {
   next();
 });
 
-app.set("trust proxy", 1);
+// app.set("trust proxy", 1);
 
 mongoose.connect(
   "mongodb+srv://sabgd:abcd1234@cluster0.zgfpmyx.mongodb.net/keeperDB?retryWrites=true&w=majority",
