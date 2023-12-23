@@ -16,7 +16,7 @@ function Home() {
   const [notes, setNotes] = useState([]);
   let navigate = useNavigate();
 
-  useEffect(() => {
+  // useEffect(() => {
 
     // if (localStorage.getItem("userEmail") !== null) {
       fetch("https://keeper25-backend.onrender.com/home", {
@@ -45,9 +45,9 @@ function Home() {
           // }
         });
     // }
-  }, []);
+  // }, []);
 
-  useEffect(() => {
+  // useEffect(() => {
     if (localStorage.getItem("userEmail") === null) {
       fetch("https://keeper25-backend.onrender.com/auth/login/success", 
       {
@@ -79,7 +79,7 @@ function Home() {
           // window.location.reload(false);
         });
     }
-  }, []);
+  // }, []);
 
 
   console.log("currUser-> ", currUser);
