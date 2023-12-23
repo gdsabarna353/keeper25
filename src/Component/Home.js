@@ -49,18 +49,18 @@ function Home() {
 
   useEffect(() => {
     if (localStorage.getItem("userEmail") === null) {
-      fetch("https://keeper25-backend.onrender.com/auth/login/success" 
-      // {
-      //   method: "GET",
-      //   credentials: "include",
-      //   headers: {
-      //     Accept: "application/json",
-      //     "Content-Type": "application/json",
-      //     "Access-Control-Allow-Credentials": "true",
-      //     // "Access-Control-Allow-Origin": "*",
-      //     // "Authorization": localStorage.getItem("userEmail")
-      //   },
-      // }
+      fetch("https://keeper25-backend.onrender.com/auth/login/success", 
+      {
+        method: "GET",
+        "credentials": "include",
+        headers: {
+          "Accept": "application/json",
+          "Content-Type": "application/json",
+          // "Access-Control-Allow-Credentials": "true",
+          "Access-Control-Allow-Origin": "https://keeper25-backend.onrender.com/",
+          // "Authorization": localStorage.getItem("userEmail")
+        },
+      }
            )
         .then((res) => res.json())
         .then((data) => {
