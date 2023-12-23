@@ -392,7 +392,7 @@ app.get('/', (req, res)=>{
 app.get("/home", (req, res) => {
 
   var email = "";
-  if (req.user) {
+  if (req.isAuthenticated()) {
     console.log("req.user is present..");
     email = req.user._json.email;
   } else {
@@ -757,7 +757,7 @@ app.post(
 );
 
 app.get("/auth/login/success", async (req, res) => {
-  if (req.user) {
+  if (req.isAuthenticated()) {
     console.log("auth req user-> ", req.user);
     await User.findOne(
       { email: req.user._json.email },
