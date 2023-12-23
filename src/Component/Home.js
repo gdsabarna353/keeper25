@@ -57,7 +57,7 @@ function Home() {
           "Accept": "application/json",
           "Content-Type": "application/json",
           // "Access-Control-Allow-Credentials": "true",
-          "Access-Control-Allow-Origin": "https://keeper25-backend.onrender.com/",
+          "Access-Control-Allow-Origin": "https://keeper25-frontend.netlify.app/",
           // "Authorization": localStorage.getItem("userEmail")
         },
       }
