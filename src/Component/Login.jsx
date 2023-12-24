@@ -23,6 +23,11 @@ function Login() {
     });
   }
   function handleGoogleLogin(){
+    // fetch("http://localhost:8000/auth/google")
+    // .then(res=> res.json())
+    // .then(data=>{
+    //   console.log("handleGoogleLoginData-> ", data);
+    // });
     // fetch("http://localhost:8000/auth/google/home", {
     //   // mode: "no-cors",
     //   method: "GET",
@@ -37,7 +42,7 @@ function Login() {
     //   }
     // });
 
-    window.open("https://keeper25-backend.onrender.com/auth/google", "_self");
+    // window.open("http://localhost:8000/auth/google", "_self");
 
     // fetch("http://localhost:8000/auth/google/home", {
     //   // mode: "no-cors",
@@ -56,7 +61,7 @@ function Login() {
   }
   function handleSubmit(event) {
     event.preventDefault();
-    fetch("https://keeper25-backend.onrender.com/login", {
+    fetch("/login", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ email: login.Email, password: login.Password }),
@@ -137,11 +142,11 @@ function Login() {
           <div class="css-1l8wmix mb-2"><span class="css-14v43as">Or with email and password</span></div>
 
           <Link 
-            className="btn btn-block btn-social btn-google mt-3 bg-danger text-white w-100 py-2" 
-            role="button" 
-            //onClick={handleGoogleLogin}
-            to="https://keeper25-backend.onrender.com/auth/google"
-            >
+          className="btn btn-block btn-social btn-google mt-3 bg-danger text-white w-100 py-2" 
+          role="button" 
+          // onClick={handleGoogleLogin}
+          to="http://localhost:8000/auth/google"
+          >
             <i className="fab fa-google"></i>
             Sign In with Google
           </Link>
