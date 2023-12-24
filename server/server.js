@@ -35,6 +35,8 @@ app.use(express.static('build'));
 //   })
 // );
 
+app.set("trust proxy", 1);
+
 app.use(session({
   secret: "this is a little secret",
   resave: false,
