@@ -38,9 +38,13 @@ app.use(express.static('build'));
 app.set("trust proxy", 1);
 
 app.use(session({
-  secret: "this is a little secret",
-  resave: false,
-  saveUninitialized: true
+  secret: process.env.GOOGLE_CLIENT_SECRET || "this is a little secret",
+  resave: true,
+  saveUninitialized: false,
+  cookie: {
+      sameSite: process.env.NODE_ENV === "production" ? 'none' : 'lax', // must be 'none' to enable cross-site delivery
+      secure: process.env.NODE_ENV === "production", // must be true if sameSite='none'
+    }
 }));
 
 app.use(passport.initialize());
