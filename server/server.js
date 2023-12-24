@@ -46,7 +46,7 @@ app.use(passport.session());
 
 app.use(
   cors({
-    origin: "http://localhost:3000",
+    origin: "https://keeper25-frontend.netlify.app",
     methods: "GET,POST,PUT,DELETE",
     credentials: true,
   })
@@ -148,7 +148,7 @@ passport.use(
     {
       clientID: process.env.GOOGLE_CLIENT_ID,
       clientSecret: process.env.GOOGLE_CLIENT_SECRET,
-      callbackURL: "http://localhost:8000/auth/google/home",
+      callbackURL: "https://keeper25-backend.onrender.com/auth/google/home",
     },
     function (accessToken, refreshToken, profile, cb) {
       return cb(null, profile);
@@ -803,7 +803,7 @@ app.get("/auth/login/success", async (req, res) => {
 
 app.get("/auth/logout", (req, res) => {
   req.logout();
-  res.redirect("http://localhost:3000/home");
+  res.redirect("https://keeper25-frontend.netlify.app/home");
 });
 
 app.get(
@@ -816,8 +816,8 @@ app.get(
 // app.get(
 //   "/auth/google/home",
 //   passport.authenticate("google",{
-//     successRedirect: "http://localhost:8000/auth/login/success",
-//     failureRedirect: "http://localhost:3000/login",
+//     successRedirect: "https://keeper25-backend.onrender.com/auth/login/success",
+//     failureRedirect: "https://keeper25-frontend.netlify.app/login",
 //   })
 // );
 
@@ -826,11 +826,11 @@ app.get(
   "/auth/google/home", function(req, res, next) {
     passport.authenticate('google', function(err, user, info) {
         if (err) {
-            res.redirect('http://localhost:3000/signup');
+            res.redirect('https://keeper25-frontend.netlify.app/signup');
         }
 
         if (!user) {
-            res.redirect('http://localhost:3000/login');
+            res.redirect('https://keeper25-frontend.netlify.app/login');
         }
 
         req.logIn(user, function(err) {
@@ -838,7 +838,7 @@ app.get(
                 return next(err);
             }
 
-            res.redirect("http://localhost:3000");
+            res.redirect("https://keeper25-frontend.netlify.app");
         });
     })(req, res, next);
 }
