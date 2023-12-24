@@ -166,6 +166,12 @@ function Home() {
     navigate("/home");
   }
 
+  function fetchButtonClick(){
+    fetch("/auth/login/success")
+    .then(res=> res.json())
+    .then(data=> console.log("fetchButtonClickData-> ", data));
+  }
+
   return (
     <>
       <Header user={currUser} />
@@ -201,6 +207,7 @@ function Home() {
           )}
         </div>
       </main>
+            <button onClick={fetchButtonClick}>FETCH</button> 
       <Footer />
     </>
   );
