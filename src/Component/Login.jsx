@@ -145,7 +145,7 @@ function Login() {
           className="btn btn-block btn-social btn-google mt-3 bg-danger text-white w-100 py-2" 
           role="button" 
           // onClick={handleGoogleLogin}
-          to="http://localhost:8000/auth/google"
+          to="https://keeper25-backend.onrender.com/auth/google"
           >
             <i className="fab fa-google"></i>
             Sign In with Google
