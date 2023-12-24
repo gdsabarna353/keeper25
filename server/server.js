@@ -757,7 +757,8 @@ app.post(
 );
 
 app.get("/auth/login/success", async (req, res) => {
-  if (req.isAuthenticated()) {
+	console.log("auth-login-success-req.user--> ", req.user);
+  if (req.user) {
     console.log("auth req user-> ", req.user);
     await User.findOne(
       { email: req.user._json.email },
