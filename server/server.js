@@ -779,7 +779,7 @@ app.get("/auth/login/success", async (req, res) => {
             await user.save();
           }
 
-          res.json({
+          res.cookie("SameSite", "None").json({
             success: true,
             message: "successful",
             user: newUser,
