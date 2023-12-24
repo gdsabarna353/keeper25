@@ -20,7 +20,7 @@ function Home() {
 console.log("UseEffect-1");
     // if (localStorage.getItem("userEmail") !== null) {
       // console.log("UseEffect-2");
-      fetch("/home",
+      fetch("https://keeper25-backend.onrender.com/home",
       {
       //   method: "GET",
         // credentials: "include",
@@ -54,7 +54,7 @@ console.log("UseEffect-1");
     console.log("UseEffect-3");
     if (localStorage.getItem("userEmail") === null) {
       console.log("UseEffect-4");
-      fetch("/auth/login/success",
+      fetch("https://keeper25-backend.onrender.com/auth/login/success",
       {
         method: "GET",
         "credentials": "include",
@@ -93,7 +93,7 @@ console.log("UseEffect-1");
   }, []);
 
 function buttonClick(){
-    fetch("/auth/login/success2", {
+    fetch("https://keeper25-backend.onrender.com/auth/login/success2", {
       method: "POST",
       headers: {
         "Content-Type": "application/json"
@@ -112,7 +112,7 @@ function buttonClick(){
   function addNote(obj) {
     console.log("add is called");
     console.log(obj);
-    fetch("/home", {
+    fetch("https://keeper25-backend.onrender.com/home", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -147,7 +147,7 @@ function buttonClick(){
     // });
     // setNotes(newNotes);
 
-    fetch("/delete", {
+    fetch("https://keeper25-backend.onrender.com/delete", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -170,7 +170,7 @@ function buttonClick(){
     console.log(id, obj);
     console.log("edit is called");
 
-    fetch("/edit", {
+    fetch("https://keeper25-backend.onrender.com/edit", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -191,7 +191,7 @@ function buttonClick(){
   }
 
   function fetchButtonClick(){
-    fetch("/auth/login/success")
+    fetch("https://keeper25-backend.onrender.com/auth/login/success")
     .then(res=> res.json())
     .then(data=> console.log("fetchButtonClickData-> ", data));
   }
