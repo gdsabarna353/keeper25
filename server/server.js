@@ -817,38 +817,35 @@ app.get(
   passport.authenticate("google", { scope: ["profile", "email"] })
 );
 
-
+// app.get(
+//   "/auth/google/home",
+//   passport.authenticate("google",{
+//     successRedirect: "https://keeper25-frontend.netlify.app",
+//     failureRedirect: "https://keeper25-frontend.netlify.app/login",
+//   })
+// );
 
 app.get(
-  "/auth/google/home",
-  passport.authenticate("google",{
-    successRedirect: "https://keeper25-frontend.netlify.app",
-    failureRedirect: "https://keeper25-frontend.netlify.app/login",
-  })
+  "/auth/google/home", function(req, res, next) {
+    passport.authenticate('google', function(err, user, info) {
+        if (err) {
+            res.redirect('https://keeper25-frontend.netlify.app/signup');
+        }
+
+        if (!user) {
+            res.redirect('https://keeper25-frontend.netlify.app/login');
+        }
+
+        req.logIn(user, function(err) {
+            if (err) {
+                return next(err);
+            }
+
+            res.redirect("https://keeper25-frontend.netlify.app");
+        });
+    })(req, res, next);
+}
 );
-
-
-// app.get(
-//   "/auth/google/home", function(req, res, next) {
-//     passport.authenticate('google', function(err, user, info) {
-//         if (err) {
-//             res.redirect('https://keeper25-frontend.netlify.app/signup');
-//         }
-
-//         if (!user) {
-//             res.redirect('https://keeper25-frontend.netlify.app/login');
-//         }
-
-//         req.logIn(user, function(err) {
-//             if (err) {
-//                 return next(err);
-//             }
-
-//             res.redirect("https://keeper25-frontend.netlify.app");
-//         });
-//     })(req, res, next);
-// }
-// );
 
 app.listen(port, () => {
   console.log(`server is listening on port ${port}.`);
