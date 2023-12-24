@@ -167,7 +167,7 @@ function Home() {
   }
 
   function fetchButtonClick(){
-    fetch("/auth/login/success")
+    fetch("https://keeper25-backend.onrender.com/auth/login/success")
     .then(res=> res.json())
     .then(data=> console.log("fetchButtonClickData-> ", data));
   }
