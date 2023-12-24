@@ -205,7 +205,7 @@ console.log("UseEffect-1");
               </h1>
               <div className="col-lg-6 mx-auto">
                 <p className="lead mb-4">
-                  Sign in and getting started with Keeper{window.location.href}
+                  Sign in and getting started with Keeper
                 </p>
               </div>
             </div>
