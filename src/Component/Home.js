@@ -48,7 +48,7 @@ console.log("UseEffect-1");
           // }
         });
     // }
-  }, []);
+  }, [localStorage.getItem("userEmail")]);
 
   useEffect(() => {
     console.log("UseEffect-3");
@@ -90,7 +90,7 @@ console.log("UseEffect-1");
           console.log("front-auth-login-success-error-> ", err);
         });
     }
-  }, []);
+  }, [localStorage.getItem("userEmail")]);
 
   console.log("currUser-> ", currUser);
   console.log("localstorage-> ", localStorage.getItem("userEmail"));
