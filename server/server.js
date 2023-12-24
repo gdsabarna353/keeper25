@@ -819,42 +819,34 @@ app.get(
 
 
 
-// app.get(
-//   "/auth/google/home",
-//   passport.authenticate("google",{
-//     successRedirect: "https://keeper25-backend.onrender.com/auth/login/success",
-//     failureRedirect: "https://keeper25-frontend.netlify.app/login",
-//   })
-// );
-
-
 app.get(
-  "/auth/google/home", function(req, res, next) {
-    passport.authenticate('google', function(err, user, info) {
-        if (err) {
-            res.redirect('https://keeper25-frontend.netlify.app/signup');
-        }
-
-        if (!user) {
-            res.redirect('https://keeper25-frontend.netlify.app/login');
-        }
-
-        req.logIn(user, function(err) {
-            if (err) {
-                return next(err);
-            }
-
-            res.redirect("https://keeper25-frontend.netlify.app");
-        });
-    })(req, res, next);
-}
+  "/auth/google/home",
+  passport.authenticate("google",{
+    successRedirect: "https://keeper25-frontend.netlify.app",
+    failureRedirect: "https://keeper25-frontend.netlify.app/login",
+  })
 );
 
-// app.get("/auth/login/success2", 
-// passport.authenticate("google", 
-// {scope: ["profile", "email"], failureRedirect: "http://localhost:3000/login"
-// }), function(req, res){
-//   res.redirect("http://localhost:3000/signup");
+
+// app.get(
+//   "/auth/google/home", function(req, res, next) {
+//     passport.authenticate('google', function(err, user, info) {
+//         if (err) {
+//             res.redirect('https://keeper25-frontend.netlify.app/signup');
+//         }
+
+//         if (!user) {
+//             res.redirect('https://keeper25-frontend.netlify.app/login');
+//         }
+
+//         req.logIn(user, function(err) {
+//             if (err) {
+//                 return next(err);
+//             }
+
+//             res.redirect("https://keeper25-frontend.netlify.app");
+//         });
+//     })(req, res, next);
 // }
 // );
 
