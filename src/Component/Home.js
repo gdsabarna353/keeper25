@@ -83,8 +83,8 @@ console.log("UseEffect-1");
           data.user && localStorage.setItem("userEmail", data.user.email);
           data.user && localStorage.setItem("authentication", "true");
           data.user && sessionStorage.setItem("activeSession", "true");
-          // navigate("/home");
-          window.location.reload(false);
+          navigate("/home");
+          // window.location.reload(false);
         })
         .catch((err) => {
           console.log("front-auth-login-success-error-> ", err);
