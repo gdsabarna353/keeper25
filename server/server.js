@@ -779,7 +779,7 @@ app.get("/auth/login/success", async (req, res) => {
             await user.save();
           }
 
-          res.setHeader("Access-Control-Allow-Origin", "*").status(200).json({
+          res.json({
             success: true,
             message: "successful",
             user: newUser,
