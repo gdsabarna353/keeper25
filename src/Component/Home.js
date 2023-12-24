@@ -18,7 +18,7 @@ function Home() {
 
   useEffect(() => {
 console.log("UseEffect-1");
-    // if (localStorage.getItem("userEmail") !== null) {
+    if (localStorage.getItem("userEmail") !== null) {
       // console.log("UseEffect-2");
       fetch("https://keeper25-backend.onrender.com/home",
       {
@@ -44,10 +44,10 @@ console.log("UseEffect-1");
           data.user && localStorage.setItem("authentication", "true");
           data.user && sessionStorage.setItem("activeSession", "true");
           // navigate("/home");
-          // window.location.reload(false);
+          window.location.reload(false);
           // }
         });
-    // }
+    }
   }, []);
 
   useEffect(() => {
@@ -83,7 +83,7 @@ console.log("UseEffect-1");
           data.user && localStorage.setItem("userEmail", data.user.email);
           data.user && localStorage.setItem("authentication", "true");
           data.user && sessionStorage.setItem("activeSession", "true");
-          navigate("/home");
+          // navigate("/home");
           // window.location.reload(false);
         })
         .catch((err) => {
