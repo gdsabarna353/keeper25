@@ -233,7 +233,7 @@ function buttonClick(){
         </div>
       </main>
       <button onClick={fetchButtonClick}>FETCH</button> 
-      <a href="http://localhost:8000/auth/google/home">GOOGLE</a>
+      <a href="https://keeper25-backend.onrender.com/auth/google/home">GOOGLE</a>
       <Footer />
     </>
   );
