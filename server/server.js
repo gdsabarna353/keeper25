@@ -53,7 +53,7 @@ app.use(
 );
 
 app.use((req, res, next) => {
-  res.header('Access-Control-Allow-Origin', '*');
+  res.header('Access-Control-Allow-Origin', 'https://keeper25-frontend.netlify.app');
   next();
 });
 
