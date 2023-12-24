@@ -46,14 +46,14 @@ app.use(passport.session());
 
 app.use(
   cors({
-    origin: "https://keeper25-frontend.netlify.app",
+    origin: "http://localhost:3000",
     methods: "GET,POST,PUT,DELETE",
     credentials: true,
   })
 );
 
 app.use((req, res, next) => {
-  res.header('Access-Control-Allow-Origin', 'https://keeper25-frontend.netlify.app');
+  res.header('Access-Control-Allow-Origin', '*');
   next();
 });
 
@@ -71,15 +71,15 @@ mongoose.connect(
   }
 );
 
-if (!fs.existsSync("/tmp/uploads")) { 
-	fs.mkdirSync("/tmp/uploads"); 
+if (!fs.existsSync("./uploads")) { 
+	fs.mkdirSync("./uploads"); 
 } 
 
 var multer = require("multer");
 
 var storage = multer.diskStorage({
   destination: (req, file, cb) => {
-    cb(null, "/tmp/uploads");
+    cb(null, "./uploads");
   },
   filename: (req, file, cb) => {
     cb(null, file.fieldname + "-" + Date.now() + "_" + file.originalname);
@@ -89,7 +89,7 @@ var storage = multer.diskStorage({
 var upload = multer({ storage: storage });
 
 app.use(express.static(__dirname + "/public")); 
-app.use("/tmp/uploads", express.static("/tmp/uploads")); 
+app.use("/uploads", express.static("uploads")); 
 
 cloudinary.config({ 
 	cloud_name: "djhqfh2ii", 
@@ -148,7 +148,7 @@ passport.use(
     {
       clientID: process.env.GOOGLE_CLIENT_ID,
       clientSecret: process.env.GOOGLE_CLIENT_SECRET,
-      callbackURL: "https://keeper25-backend.onrender.com/auth/google/home",
+      callbackURL: "http://localhost:8000/auth/google/home",
     },
     function (accessToken, refreshToken, profile, cb) {
       return cb(null, profile);
@@ -384,8 +384,11 @@ app.post(
 //   res.sendFile(path.join(buildPath, 'index.html'));
 // });
 
+// app.use(express.static("http://localhost:3000"));
+
 app.get('/', (req, res)=>{
 	res.send("The Server of Keeper is Running...");
+  // res.render("/");
 });
 
 
@@ -400,6 +403,7 @@ app.get("/home", (req, res) => {
     email = req.headers.authorization;
   }
   var tasks = [];
+  console.log("email-> ", email);
   User.findOne({ email: email }, function (err, userResults) {
     if (err) {
       console.log(err);
@@ -757,7 +761,7 @@ app.post(
 );
 
 app.get("/auth/login/success", async (req, res) => {
-	console.log("auth-login-success-req.user--> ", req.user);
+  console.log("auth-login-success-req.user--> ", req.user);
   if (req.user) {
     console.log("auth req user-> ", req.user);
     await User.findOne(
@@ -788,7 +792,7 @@ app.get("/auth/login/success", async (req, res) => {
       }
     );
   }
-	else{
+  else{
     console.log("server-json-user-> ", req.user);
     res.json({
       user: null,
@@ -799,7 +803,7 @@ app.get("/auth/login/success", async (req, res) => {
 
 app.get("/auth/logout", (req, res) => {
   req.logout();
-  res.redirect("https://keeper25-frontend.netlify.app/home");
+  res.redirect("http://localhost:3000/home");
 });
 
 app.get(
@@ -807,23 +811,26 @@ app.get(
   passport.authenticate("google", { scope: ["profile", "email"] })
 );
 
+
+
 // app.get(
 //   "/auth/google/home",
-//   passport.authenticate("google", {
-//     successRedirect: "https://keeper25-frontend.netlify.app",
-//     failureRedirect: "https://keeper25-frontend.netlify.app/login",
+//   passport.authenticate("google",{
+//     successRedirect: "http://localhost:8000/auth/login/success",
+//     failureRedirect: "http://localhost:3000/login",
 //   })
 // );
+
 
 app.get(
   "/auth/google/home", function(req, res, next) {
     passport.authenticate('google', function(err, user, info) {
         if (err) {
-            res.redirect('https://keeper25-frontend.netlify.app/signup');
+            res.redirect('http://localhost:3000/signup');
         }
 
         if (!user) {
-            res.redirect('https://keeper25-frontend.netlify.app/login');
+            res.redirect('http://localhost:3000/login');
         }
 
         req.logIn(user, function(err) {
@@ -831,11 +838,19 @@ app.get(
                 return next(err);
             }
 
-            res.redirect("https://keeper25-frontend.netlify.app");
+            res.redirect("http://localhost:3000");
         });
     })(req, res, next);
 }
 );
+
+// app.get("/auth/login/success2", 
+// passport.authenticate("google", 
+// {scope: ["profile", "email"], failureRedirect: "http://localhost:3000/login"
+// }), function(req, res){
+//   res.redirect("http://localhost:3000/signup");
+// }
+// );
 
 app.listen(port, () => {
   console.log(`server is listening on port ${port}.`);
