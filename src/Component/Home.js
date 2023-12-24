@@ -44,7 +44,7 @@ console.log("UseEffect-1");
           data.user && localStorage.setItem("authentication", "true");
           data.user && sessionStorage.setItem("activeSession", "true");
           // navigate("/home");
-          // window.location.reload(false);
+          window.location.reload(false);
           // }
         });
     }
