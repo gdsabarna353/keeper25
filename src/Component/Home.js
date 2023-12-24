@@ -17,10 +17,12 @@ function Home() {
   let navigate = useNavigate();
 
   useEffect(() => {
-
+console.log("UseEffect-1");
     // if (localStorage.getItem("userEmail") !== null) {
-      fetch("https://keeper25-backend.onrender.com/home", {
-        // method: "GET",
+      // console.log("UseEffect-2");
+      fetch("/home",
+      {
+      //   method: "GET",
         // credentials: "include",
         headers: {
           // Accept: "application/json",
@@ -28,7 +30,8 @@ function Home() {
           // "Access-Control-Allow-Credentials": "true",
           Authorization: localStorage.getItem("userEmail"),
         },
-      })
+      }
+      )
         .then((res) => res.json())
         .then((data) => {
           // alert("normal hello");
@@ -48,21 +51,26 @@ function Home() {
   }, []);
 
   useEffect(() => {
+    console.log("UseEffect-3");
     if (localStorage.getItem("userEmail") === null) {
-      fetch("https://keeper25-backend.onrender.com/auth/login/success", 
+      console.log("UseEffect-4");
+      fetch("/auth/login/success",
       {
         method: "GET",
         "credentials": "include",
         headers: {
           "Accept": "application/json",
           "Content-Type": "application/json",
-          // "Access-Control-Allow-Credentials": "true",
-          "Access-Control-Allow-Origin": "https://keeper25-frontend.netlify.app/",
+          "Access-Control-Allow-Credentials": "true",
+          "Access-Control-Allow-Origin": "",
           // "Authorization": localStorage.getItem("userEmail")
         },
       }
-           )
-        .then((res) => res.json())
+      )
+        .then((res) => {
+          if (res.status === 200) return res.json();
+          throw new Error("authentication has been failed!");
+         })
         .then((data) => {
           // if(!data.user.contact){
           //  const contact = prompt();
@@ -77,9 +85,25 @@ function Home() {
           data.user && sessionStorage.setItem("activeSession", "true");
           // navigate("/home");
           // window.location.reload(false);
+        })
+        .catch((err) => {
+          console.log("front-auth-login-success-error-> ", err);
         });
     }
   }, []);
+
+function buttonClick(){
+    fetch("/auth/login/success2", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify({message: "google login secret"}),
+    })
+    .then(res=> res.json())
+    .then(data=> console.log("google json data-> ", data));
+  }
+
 
 
   console.log("currUser-> ", currUser);
@@ -88,7 +112,7 @@ function Home() {
   function addNote(obj) {
     console.log("add is called");
     console.log(obj);
-    fetch("https://keeper25-backend.onrender.com/home", {
+    fetch("/home", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -123,7 +147,7 @@ function Home() {
     // });
     // setNotes(newNotes);
 
-    fetch("https://keeper25-backend.onrender.com/delete", {
+    fetch("/delete", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -146,7 +170,7 @@ function Home() {
     console.log(id, obj);
     console.log("edit is called");
 
-    fetch("https://keeper25-backend.onrender.com/edit", {
+    fetch("/edit", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -167,7 +191,7 @@ function Home() {
   }
 
   function fetchButtonClick(){
-    fetch("https://keeper25-backend.onrender.com/auth/login/success")
+    fetch("/auth/login/success")
     .then(res=> res.json())
     .then(data=> console.log("fetchButtonClickData-> ", data));
   }
@@ -177,6 +201,7 @@ function Home() {
       <Header user={currUser} />
       {/* {currUser && !currUser.contact && <CreatePortalModel><h1>hello</h1></CreatePortalModel>} */}
       <main className="flex-shrink-0">
+      
         <div className="container">
           {/* {console.log("authentication is: ", localStorage.getItem("authentication"))} */}
           {localStorage.getItem("authentication") ? (
@@ -200,14 +225,15 @@ function Home() {
               </h1>
               <div className="col-lg-6 mx-auto">
                 <p className="lead mb-4">
-                  Sign in and getting started with Keeper
+                  Sign in and getting started with Keeper{window.location.href}
                 </p>
               </div>
             </div>
           )}
         </div>
       </main>
-            <button onClick={fetchButtonClick}>FETCH</button> 
+      <button onClick={fetchButtonClick}>FETCH</button> 
+      <a href="http://localhost:8000/auth/google/home">GOOGLE</a>
       <Footer />
     </>
   );
