@@ -22,43 +22,7 @@ function Login() {
       };
     });
   }
-  function handleGoogleLogin(){
-    // fetch("http://localhost:8000/auth/google")
-    // .then(res=> res.json())
-    // .then(data=>{
-    //   console.log("handleGoogleLoginData-> ", data);
-    // });
-    // fetch("http://localhost:8000/auth/google/home", {
-    //   // mode: "no-cors",
-    //   method: "GET",
-    //   headers: {"Content-Type": "application/json", 
-    //   // "Access-Control-Allow-Origin": "http://localhost:8000/auth/google/home"
-    // }
-    // }).then((response)=> response.json())
-    // .then((data)=>{
-    //   console.log(data);
-    //   if(data.flag === true){
-    //     navigate("/home");
-    //   }
-    // });
-
-    // window.open("http://localhost:8000/auth/google", "_self");
-
-    // fetch("http://localhost:8000/auth/google/home", {
-    //   // mode: "no-cors",
-    //   method: "GET",
-    //   headers: {"Content-Type": "application/json", 
-    //   // "Access-Control-Allow-Origin": "http://localhost:8000/auth/google/home"
-    // }
-    // }).then((response)=> response.json())
-    // .then((data)=>{
-    //   console.log("hi");
-    //   if(data.flag === true){
-    //     // navigate("/home");
-    //   }
-    // });
-    
-  }
+  
   function handleSubmit(event) {
     event.preventDefault();
     fetch("https://keeper25-backend.onrender.com/login", {
@@ -144,7 +108,6 @@ function Login() {
           <Link 
           className="btn btn-block btn-social btn-google mt-3 bg-danger text-white w-100 py-2" 
           role="button" 
-          // onClick={handleGoogleLogin}
           to="https://keeper25-backend.onrender.com/auth/google"
           >
             <i className="fab fa-google"></i>
