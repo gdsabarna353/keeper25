@@ -92,20 +92,6 @@ console.log("UseEffect-1");
     }
   }, []);
 
-function buttonClick(){
-    fetch("https://keeper25-backend.onrender.com/auth/login/success2", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json"
-      },
-      body: JSON.stringify({message: "google login secret"}),
-    })
-    .then(res=> res.json())
-    .then(data=> console.log("google json data-> ", data));
-  }
-
-
-
   console.log("currUser-> ", currUser);
   console.log("localstorage-> ", localStorage.getItem("userEmail"));
 
@@ -190,12 +176,6 @@ function buttonClick(){
     navigate("/home");
   }
 
-  function fetchButtonClick(){
-    fetch("https://keeper25-backend.onrender.com/auth/login/success")
-    .then(res=> res.json())
-    .then(data=> console.log("fetchButtonClickData-> ", data));
-  }
-
   return (
     <>
       <Header user={currUser} />
@@ -232,8 +212,6 @@ function buttonClick(){
           )}
         </div>
       </main>
-      <button onClick={fetchButtonClick}>FETCH</button> 
-      <a href="https://keeper25-backend.onrender.com/auth/google/home">GOOGLE</a>
       <Footer />
     </>
   );
