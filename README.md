@@ -1,9 +1,5 @@
 # Keeper
 
-Keeper is a full-stack website built on the MERN stack, serving as a CRUD application for managing day-to-day tasks. The platform offers features like task creation, viewing, editing, updating, and deletion once logged in. Users can also modify their profile information and customize the website's theme from the settings tab.
-
-# Keeper
-
 Keeper is a full-stack website built on the MERN stack, utilizing the following technologies:
 
 - **MongoDB:** A NoSQL database used for storing task and user data.
