@@ -17,8 +17,6 @@ The platform serves as a CRUD application for managing day-to-day tasks. It offe
 * Customizable theme colors and text colors
 * Profile editing and updating
 
-💻 Built with
-
 ## Getting Started
 
 ### Installation
